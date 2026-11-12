@@ -31,11 +31,17 @@
     font-family: var(--font-body);
     font-size: 17px;
     line-height: 1.55;
+    padding-block: 0 56px;
+  }
+  .band { background: var(--surface); }
+  .band-inre, .blad {
+    box-sizing: content-box; max-width: 680px; margin-inline: auto;
     padding-left: max(16px, env(safe-area-inset-left, 0px));
     padding-right: max(16px, env(safe-area-inset-right, 0px));
-    padding-block: 32px 56px;
   }
-  .blad { max-width: 680px; margin-inline: auto; display: flex; flex-direction: column; gap: 40px; }
+  .band-inre { padding-block: 14px; display: flex; align-items: center; }
+  .band img { display: block; height: 44px; width: auto; }
+  .blad { padding-block: 32px 0; display: flex; flex-direction: column; gap: 40px; }
 
   h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
   h1 { font-size: clamp(2rem, 7vw, 2.9rem); font-weight: 800; letter-spacing: -0.01em; }
@@ -112,9 +118,13 @@
   }
 </style>
 
+<div class="band">
+  <div class="band-inre"><img src="lathund-logo.png" alt="Halland Tech Week" width="1000" height="294"></div>
+</div>
+
 <main class="blad">
   <header class="topp">
-    <p class="etikett">Halland Tech Week · Kreativ workshop</p>
+    <p class="etikett">Kreativ workshop</p>
     <h1>Från idé till länk på en stund</h1>
     <p class="ingress">Du behöver inte kunna koda. <strong>Skriv som du pratar</strong> i rutan längst ner på skärmen, så bygger Claude. Fyra steg tar dig hela vägen.</p>
   </header>
