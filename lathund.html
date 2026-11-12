@@ -1,0 +1,217 @@
+<title>Lathund Halland Tech Week</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+  /* Layout: en smal kolumn som ett stationsblad – fyra numrerade steg med färdiga repliker att säga, sedan korta råd. */
+  :root {
+    --bg: #F2F6F8;
+    --surface: #FFFFFF;
+    --fg: #10212C;
+    --muted: #51656F;
+    --line: #D3DEE4;
+    --accent: #0A6C88;
+    --mark: #FFDD57;
+    --mark-fg: #10212C;
+    --font-display: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D171D; --surface: #15232B; --fg: #E7EFF3; --muted: #9DB0BA;
+      --line: #2A3C46; --accent: #62C6E2; --mark: #E9C63F; --mark-fg: #10212C;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D171D; --surface: #15232B; --fg: #E7EFF3; --muted: #9DB0BA;
+    --line: #2A3C46; --accent: #62C6E2; --mark: #E9C63F; --mark-fg: #10212C;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px 56px;
+  }
+  .blad { max-width: 680px; margin-inline: auto; display: flex; flex-direction: column; gap: 40px; }
+
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+  h1 { font-size: clamp(2rem, 7vw, 2.9rem); font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 1.35rem; font-weight: 700; }
+  h3 { font-size: 1.2rem; font-weight: 700; }
+  p { margin: 0; }
+
+  .topp { display: flex; flex-direction: column; gap: 12px; }
+  .etikett {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--accent);
+  }
+  .ingress { font-size: 1.12rem; color: var(--muted); max-width: 34em; }
+  .ingress strong { color: var(--fg); font-weight: 600; }
+
+  .steg { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .steg > li {
+    display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 16px;
+    padding-block: 24px; border-top: 1px solid var(--line);
+  }
+  .steg > li:last-child { border-bottom: 1px solid var(--line); }
+  .nr {
+    font-family: var(--font-display); font-weight: 700; font-size: 2rem; line-height: 1;
+    color: var(--accent); font-variant-numeric: tabular-nums;
+  }
+  .innehall { display: flex; flex-direction: column; gap: 12px; }
+  .innehall > p { color: var(--muted); }
+
+  .repliker { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .replik {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 10px 10px 14px;
+  }
+  .replik q { flex: 1; min-width: 0; quotes: "”" "”"; font-weight: 500; }
+  .replik button {
+    flex: none; font: 600 0.8rem var(--font-body); color: var(--accent);
+    background: transparent; border: 1px solid var(--line); border-radius: 7px;
+    padding: 7px 11px; cursor: pointer; min-width: 78px;
+  }
+  .replik button:hover { border-color: var(--accent); }
+  .replik button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .replik button.klar { background: var(--mark); color: var(--mark-fg); border-color: var(--mark); }
+
+  mark { background: var(--mark); color: var(--mark-fg); padding: 0 0.25em; border-radius: 3px; }
+  code {
+    font-family: var(--font-mono); font-size: 0.9em; color: var(--accent);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px;
+    white-space: nowrap;
+  }
+
+  .avsnitt { display: flex; flex-direction: column; gap: 16px; }
+  .rad { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .rad li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .rad b { font-weight: 600; }
+  .rad span { color: var(--muted); }
+
+  .hjalp {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .hjalp p { color: var(--muted); }
+
+  @media (max-width: 460px) {
+    body { font-size: 16px; }
+    .steg > li { grid-template-columns: 32px minmax(0, 1fr); column-gap: 12px; }
+    .nr { font-size: 1.6rem; }
+    .replik { flex-direction: column; align-items: stretch; padding: 12px; }
+    .replik button { align-self: flex-start; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .replik button { transition: background-color 0.15s, border-color 0.15s; }
+  }
+</style>
+
+<main class="blad">
+  <header class="topp">
+    <p class="etikett">Halland Tech Week · Kreativ workshop</p>
+    <h1>Från idé till länk på en stund</h1>
+    <p class="ingress">Du behöver inte kunna koda. <strong>Skriv som du pratar</strong> i rutan längst ner på skärmen, så bygger Claude. Fyra steg tar dig hela vägen.</p>
+  </header>
+
+  <ol class="steg">
+    <li>
+      <span class="nr" aria-hidden="true">1</span>
+      <div class="innehall">
+        <h3>Berätta din idé</h3>
+        <p>En eller två meningar räcker. Säg vad appen ska göra och för vem. Claude skapar en egen mapp åt dig och visar en första version du kan klicka på.</p>
+        <ul class="repliker">
+          <li class="replik"><q>Jag har en idé: en sida som lottar vem som bjuder på fika.</q><button type="button" id="k1">Kopiera</button></li>
+          <li class="replik"><q>Jag vill bygga ett quiz om Halmstad med tio frågor.</q><button type="button" id="k2">Kopiera</button></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="nr" aria-hidden="true">2</span>
+      <div class="innehall">
+        <h3>Titta, tyck till, ändra</h3>
+        <p>Öppna länken Claude ger dig och prova. Säg sedan vad du vill ändra, <mark>en sak i taget</mark>. Beskriv det du ser, inte hur det ska lösas.</p>
+        <ul class="repliker">
+          <li class="replik"><q>Gör knappen större och lägg den i mitten.</q><button type="button" id="k3">Kopiera</button></li>
+          <li class="replik"><q>Det händer inget när jag trycker på Starta.</q><button type="button" id="k4">Kopiera</button></li>
+          <li class="replik"><q>Låt AI:n hitta på en ny fråga varje gång.</q><button type="button" id="k5">Kopiera</button></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <span class="nr" aria-hidden="true">3</span>
+      <div class="innehall">
+        <h3>Lägg ut den på nätet</h3>
+        <p>Vänta inte tills den är färdig. Första gången tar det en minut eller två, sedan får du en länk som fungerar på vilken mobil som helst.</p>
+        <ul class="repliker">
+          <li class="replik"><q>Lägg ut den.</q><button type="button" id="k6">Kopiera</button></li>
+        </ul>
+        <p>Har du ändrat något efteråt säger du samma sak igen. Länken är densamma, innehållet uppdateras.</p>
+      </div>
+    </li>
+    <li>
+      <span class="nr" aria-hidden="true">4</span>
+      <div class="innehall">
+        <h3>Dela länken</h3>
+        <p>Lägg in länken på arrangörernas plattform, så får din app en QR-kod som andra kan skanna.</p>
+      </div>
+    </li>
+  </ol>
+
+  <section class="avsnitt">
+    <h2>Så går det fortare</h2>
+    <ul class="rad">
+      <li><b>Börja litet.</b><span>En sida som gör en sak bra slår fem halvfärdiga funktioner.</span></li>
+      <li><b>Prova på mobilen tidigt.</b><span>De flesta kommer att öppna din app via QR-koden.</span></li>
+      <li><b>Fastnar något, förenkla.</b><span>Säg ”gör det enklare” i stället för att försöka en fjärde gång.</span></li>
+      <li><b>Vill du börja om?</b><span>Säg ”jag har en ny idé”. Den gamla ligger kvar.</span></li>
+    </ul>
+  </section>
+
+  <section class="avsnitt">
+    <h2>Bra att veta</h2>
+    <ul class="rad">
+      <li><b>Appen ligger öppet på nätet.</b><span>Lägg inte in personuppgifter, lösenord eller något du inte vill visa för alla.</span></li>
+      <li><b>Det som sparas, sparas i telefonen.</b><span>Appen har ingen databas, så två personer ser inte varandras resultat.</span></li>
+      <li><b>Claude frågar ibland om lov.</b><span>Det är normalt. Välj ja när det gäller din egen idé.</span></li>
+      <li><b>Kommandon finns om du vill.</b><span><code>/ny-ide</code> startar en ny idé och <code>/publicera</code> lägger ut den. Vanliga meningar fungerar lika bra.</span></li>
+    </ul>
+  </section>
+
+  <aside class="hjalp">
+    <h2>Kört fast?</h2>
+    <p>Vinka på workshopledaren. Står det att stationen inte är inloggad eller att Railway saknas är det inget du har gjort fel, och inget du behöver lösa själv.</p>
+  </aside>
+</main>
+
+<script>
+  document.querySelectorAll('.replik button').forEach(function (knapp) {
+    knapp.addEventListener('click', function () {
+      var q = knapp.parentElement.querySelector('q');
+      var klart = function () {
+        knapp.textContent = 'Kopierad';
+        knapp.classList.add('klar');
+        setTimeout(function () { knapp.textContent = 'Kopiera'; knapp.classList.remove('klar'); }, 1600);
+      };
+      var markera = function () {
+        var omr = document.createRange();
+        omr.selectNodeContents(q);
+        var val = window.getSelection();
+        val.removeAllRanges();
+        val.addRange(omr);
+      };
+      try {
+        navigator.clipboard.writeText(q.textContent).then(klart, markera);
+      } catch (fel) {
+        markera();
+      }
+    });
+  });
+</script>

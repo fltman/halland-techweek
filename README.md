@@ -28,6 +28,8 @@ Deltagaren sätter sig vid stationen och berättar sin idé. Tre skills gör job
 
 Deltagaren behöver inte kunna namnen – det räcker att säga "jag har en idé" och "lägg ut den".
 
+Lathund för deltagarna: https://claude.ai/artifact/PdGJ4aGytwNeoHZ8qyvqMX (källan är `lathund.html`).
+
 ## Så hänger det ihop
 
 - `CLAUDE.md` – hur Claude ska bete sig mot deltagarna: enkelt språk, små steg, mobilen först.
