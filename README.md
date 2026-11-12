@@ -18,13 +18,14 @@ Skriv sedan `/forbered`. Claude installerar Railway-verktyget, ber dig logga in,
 
 ## Under workshopen
 
-Deltagaren sätter sig vid stationen och berättar sin idé. Tre skills gör jobbet:
+Deltagaren sätter sig vid stationen och berättar sin idé. Fyra skills gör jobbet:
 
 | Skill | Vad den gör |
 | --- | --- |
 | `/forbered` | Gör stationen klar. Körs av workshopledaren, en gång per maskin. |
 | `/ny-ide` | Skapar en egen mapp för idén under `ideer/` och får igång den lokalt. |
 | `/publicera` | Lägger ut appen på Railway och ger en publik länk. Körs igen för att uppdatera. |
+| `/hjalp` | Öppnar lathunden i webbläsaren och säger vad nästa steg är. |
 
 Deltagaren behöver inte kunna namnen – det räcker att säga "jag har en idé" och "lägg ut den".
 
