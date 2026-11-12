@@ -1,0 +1,9 @@
+{
+  "name": "workshop-ide",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --env-file-if-exists=../../.env server.js"
+  }
+}
