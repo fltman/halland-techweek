@@ -21,9 +21,9 @@ Många i rummet har aldrig byggt något digitalt förut. Workshopen ska ge dem k
 ## Så bygger du
 - Varje idé bor i en egen mapp under `ideer/`. Skapa den med skillen `ny-ide` – kopiera aldrig mallen för hand.
 - Håll dig i idéns mapp. Rör inte `mall/`, `verktyg/`, andra deltagares idéer eller något utanför workshopmappen.
-- Enklast möjliga: vanlig HTML, CSS och JavaScript i `public/`. Inga ramverk, inga byggsteg och inga nya npm-paket om det inte verkligen behövs – varje beroende gör publiceringen långsammare.
+- Enklast möjliga: vanlig HTML, CSS och JavaScript i `public/`. Inga ramverk, inga byggsteg och inga nya npm-paket utöver det som redan finns i mallen, om det inte verkligen behövs – varje beroende gör publiceringen långsammare.
 - Sidan ska fungera på mobil. De flesta öppnar den via en QR-kod.
-- Behöver appen AI: anropa `/api/ai` (se `server.js` i idéns mapp). Lägg aldrig en API-nyckel i kod som hamnar i webbläsaren.
+- Behöver appen AI: anropa `/api/ai` från sidan (exempel överst i `server.js` i idéns mapp). Bakom den ligger Claude via Anthropics API. Bygg ingen egen AI-koppling och lägg aldrig en API-nyckel i kod som hamnar i webbläsaren.
 - Behöver appen spara något: använd webbläsarens `localStorage`. Ingen databas.
 - Provkör lokalt med `npm run dev` i idéns mapp (kör den i bakgrunden; adressen skrivs ut) och ge deltagaren länken.
 

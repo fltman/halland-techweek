@@ -46,11 +46,11 @@ cp .env.example .env
 
 Du läser aldrig `.env` och tar aldrig emot nycklar i chatten. Be ledaren öppna filen själv (`! open -e .env`) och fylla i:
 
-- `OPENROUTER_API_KEY` – en nyckel med lågt utgiftstak, som raderas efter workshopen.
-- `AI_MODEL` – modellens namn på OpenRouter.
+- `ANTHROPIC_API_KEY` – en nyckel från Anthropics konsol, skapad för workshopen, med utgiftstak, som raderas efteråt.
+- `AI_MODEL` – valfritt. Lämnas den tom används mallens standard, `claude-opus-5-5`.
 - `RAILWAY_WORKSPACE` – bara om steg 4 krävde det.
 
-Utan nyckel och modell fungerar allt utom AI i apparna. Det är ett giltigt val; fråga ledaren om det är avsikten i stället för att tjata.
+Utan nyckel fungerar allt utom AI i apparna. Det är ett giltigt val; fråga ledaren om det är avsikten i stället för att tjata.
 
 `kolla.sh` visar om värdena är satta utan att du behöver läsa filen.
 
@@ -68,7 +68,7 @@ När `kolla.sh` säger "Klart att köra", prova hela kedjan med en testapp. Ge d
 curl -s -X POST <länk>/api/ai -H 'Content-Type: application/json' -d '{"prompt":"Säg hej på svenska."}'
 ```
 
-och kontrollera att svaret innehåller `text`. Ett fel här beror nästan alltid på fel modellnamn eller en ogiltig nyckel – felet syns med `railway logs --service web` i testappens mapp.
+och kontrollera att svaret innehåller `text`. Ett fel här beror nästan alltid på en ogiltig nyckel eller ett felstavat modellnamn – felet syns med `railway logs --service web` i testappens mapp.
 
 Går något steg i `publicera.sh` fel mot Railway: läs felet, kontrollera kommandots flaggor med `railway <kommando> --help` och rätta skriptet. Railways CLI ändras ofta, och skriptet ska fungera innan deltagarna kommer. Säg tydligt till ledaren vad du ändrade, så att rättningen kan skickas upp till git och hämtas på de andra stationerna.
 

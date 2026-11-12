@@ -14,4 +14,5 @@ mal="$ROT/ideer/$namn"
 [ ! -e "$mal" ] || { echo "ideer/$namn finns redan – välj ett annat namn." >&2; exit 1; }
 
 cp -R "$ROT/mall" "$mal"
+(cd "$mal" && npm install --silent --no-audit --no-fund) || echo "OBS: npm install misslyckades – kör det igen i ideer/$namn innan appen startas." >&2
 echo "Skapade ideer/$namn"

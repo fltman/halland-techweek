@@ -25,7 +25,7 @@ fi
 
 if [ ! -f .rw-tjanst ]; then
   railway add --service web --json >/dev/null
-  for nyckel in OPENROUTER_API_KEY AI_MODEL; do
+  for nyckel in ANTHROPIC_API_KEY AI_MODEL; do
     varde="${!nyckel:-}"
     if [ -n "$varde" ]; then
       printf '%s' "$varde" | railway variable set "$nyckel" --stdin --service web --skip-deploys --json >/dev/null

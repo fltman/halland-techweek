@@ -19,8 +19,8 @@ fi
 
 if [ -f "$ROT/.env" ]; then
   set -a; . "$ROT/.env"; set +a
-  [ -n "${OPENROUTER_API_KEY:-}" ] && rad OK "OPENROUTER_API_KEY satt" || rad OBS "OPENROUTER_API_KEY tom – appar med AI fungerar inte"
-  [ -n "${AI_MODEL:-}" ] && rad OK "AI_MODEL=$AI_MODEL" || rad OBS "AI_MODEL tom – appar med AI fungerar inte"
+  [ -n "${ANTHROPIC_API_KEY:-}" ] && rad OK "ANTHROPIC_API_KEY satt" || rad OBS "ANTHROPIC_API_KEY tom – appar med AI fungerar inte"
+  rad OK "AI-modell: ${AI_MODEL:-claude-opus-5-5 (mallens standard)}"
 else
   rad OBS ".env saknas – kopiera .env.example om apparna ska kunna använda AI"
 fi

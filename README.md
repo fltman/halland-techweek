@@ -34,14 +34,14 @@ Lathund för deltagarna: https://claude.ai/artifact/PdGJ4aGytwNeoHZ8qyvqMX (käl
 ## Så hänger det ihop
 
 - `CLAUDE.md` – hur Claude ska bete sig mot deltagarna: enkelt språk, små steg, mobilen först.
-- `mall/` – startpunkten för varje idé: en liten Node-server utan beroenden som visar `public/` och erbjuder AI via `/api/ai`, så att API-nyckeln aldrig hamnar i webbläsaren.
+- `mall/` – startpunkten för varje idé: en liten Node-server som visar `public/` och erbjuder AI (Claude, via Anthropics API) på `/api/ai`, så att API-nyckeln aldrig hamnar i webbläsaren.
 - `verktyg/` – skripten bakom skillsen. `kolla.sh` visar om stationen är redo.
 - `ideer/` – en mapp per idé. Varje idé blir ett eget Railway-projekt med namnet `htw-<namn>`.
-- `.env` – OpenRouter-nyckel och modell, delas av alla idéer på stationen. Checkas aldrig in.
+- `.env` – Anthropic-nyckeln för AI i apparna, delas av alla idéer på stationen. Checkas aldrig in.
 
 ## Efteråt
 
-Radera OpenRouter-nyckeln och ta bort `htw-`-projekten i Railway, annars fortsätter de att kosta.
+Radera Anthropic-nyckeln och ta bort `htw-`-projekten i Railway, annars fortsätter de att kosta.
 
 ## Licens
 
